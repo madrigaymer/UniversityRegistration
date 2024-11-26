@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="46dda8e9ef1540b885a8d651d4fb7490" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_UNIVERSITY_REGISTRATION_MODEL.sysdiagrams" Width="1.5" PointX="5.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_UNIVERSITY_REGISTRATION_MODEL.T_CAMPUS" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_UNIVERSITY_REGISTRATION_MODEL.T_COURSE" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_UNIVERSITY_REGISTRATION_MODEL.T_PROFESSOR" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_UNIVERSITY_REGISTRATION_MODEL.T_REGISTRATION" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_UNIVERSITY_REGISTRATION_MODEL.T_SCHEDULE" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_UNIVERSITY_REGISTRATION_MODEL.T_SCORE" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_UNIVERSITY_REGISTRATION_MODEL.T_STUDENT" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="DB_UNIVERSITY_REGISTRATION_MODEL.FK__T_SCHEDUL__campu__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_UNIVERSITY_REGISTRATION_MODEL.FK__T_SCHEDUL__cours__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_UNIVERSITY_REGISTRATION_MODEL.FK__T_SCHEDUL__profe__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_UNIVERSITY_REGISTRATION_MODEL.FK__T_REGISTR__sched__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_UNIVERSITY_REGISTRATION_MODEL.FK__T_REGISTR__sched__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_UNIVERSITY_REGISTRATION_MODEL.FK__T_SCORE__schedul__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_UNIVERSITY_REGISTRATION_MODEL.FK__T_SCORE__student__4AB81AF0" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

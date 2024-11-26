@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_UNIVERSITY_REGISTRATION_MODEL.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="T_CAMPUS">
+    <Key>
+      <PropertyRef Name="campus_id" />
+    </Key>
+    <Property Name="campus_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="campus_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="campus_location" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_COURSE">
+    <Key>
+      <PropertyRef Name="course_id" />
+    </Key>
+    <Property Name="course_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="course_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="course_program" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="course_credits" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="course_requisits" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="course_hours" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_PROFESSOR">
+    <Key>
+      <PropertyRef Name="professor_id" />
+    </Key>
+    <Property Name="professor_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="professor_personal_id" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="professor_full_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="professor_hire_date" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_REGISTRATION">
+    <Key>
+      <PropertyRef Name="registration_id" />
+    </Key>
+    <Property Name="registration_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="student_id" Type="int" Nullable="false" />
+    <Property Name="schedule_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_SCHEDULE">
+    <Key>
+      <PropertyRef Name="schedule_id" />
+    </Key>
+    <Property Name="schedule_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="course_id" Type="int" Nullable="false" />
+    <Property Name="campus_id" Type="int" Nullable="false" />
+    <Property Name="professor_id" Type="int" Nullable="false" />
+    <Property Name="schedule_capacity" Type="int" Nullable="false" />
+    <Property Name="schedule_period" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="schedule_dates" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_SCORE">
+    <Key>
+      <PropertyRef Name="score_id" />
+    </Key>
+    <Property Name="score_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="student_id" Type="int" Nullable="false" />
+    <Property Name="schedule_id" Type="int" Nullable="false" />
+    <Property Name="final_score" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="score_status" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_STUDENT">
+    <Key>
+      <PropertyRef Name="student_id" />
+    </Key>
+    <Property Name="student_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="student_personal_id" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="student_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="student_last_name1" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="student_last_name2" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="student_date_of_birth" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="student_admission_date" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__T_REGISTR__sched__46E78A0C">
+    <End Role="T_STUDENT" Type="Self.T_STUDENT" Multiplicity="1" />
+    <End Role="T_REGISTRATION" Type="Self.T_REGISTRATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_STUDENT">
+        <PropertyRef Name="student_id" />
+      </Principal>
+      <Dependent Role="T_REGISTRATION">
+        <PropertyRef Name="student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_REGISTR__sched__47DBAE45">
+    <End Role="T_SCHEDULE" Type="Self.T_SCHEDULE" Multiplicity="1" />
+    <End Role="T_REGISTRATION" Type="Self.T_REGISTRATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_SCHEDULE">
+        <PropertyRef Name="schedule_id" />
+      </Principal>
+      <Dependent Role="T_REGISTRATION">
+        <PropertyRef Name="schedule_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_SCHEDUL__campu__4316F928">
+    <End Role="T_CAMPUS" Type="Self.T_CAMPUS" Multiplicity="1" />
+    <End Role="T_SCHEDULE" Type="Self.T_SCHEDULE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_CAMPUS">
+        <PropertyRef Name="campus_id" />
+      </Principal>
+      <Dependent Role="T_SCHEDULE">
+        <PropertyRef Name="campus_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_SCHEDUL__cours__4222D4EF">
+    <End Role="T_COURSE" Type="Self.T_COURSE" Multiplicity="1" />
+    <End Role="T_SCHEDULE" Type="Self.T_SCHEDULE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_COURSE">
+        <PropertyRef Name="course_id" />
+      </Principal>
+      <Dependent Role="T_SCHEDULE">
+        <PropertyRef Name="course_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_SCHEDUL__profe__440B1D61">
+    <End Role="T_PROFESSOR" Type="Self.T_PROFESSOR" Multiplicity="1" />
+    <End Role="T_SCHEDULE" Type="Self.T_SCHEDULE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_PROFESSOR">
+        <PropertyRef Name="professor_id" />
+      </Principal>
+      <Dependent Role="T_SCHEDULE">
+        <PropertyRef Name="professor_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_SCORE__schedul__4BAC3F29">
+    <End Role="T_SCHEDULE" Type="Self.T_SCHEDULE" Multiplicity="1" />
+    <End Role="T_SCORE" Type="Self.T_SCORE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_SCHEDULE">
+        <PropertyRef Name="schedule_id" />
+      </Principal>
+      <Dependent Role="T_SCORE">
+        <PropertyRef Name="schedule_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__T_SCORE__student__4AB81AF0">
+    <End Role="T_STUDENT" Type="Self.T_STUDENT" Multiplicity="1" />
+    <End Role="T_SCORE" Type="Self.T_SCORE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_STUDENT">
+        <PropertyRef Name="student_id" />
+      </Principal>
+      <Dependent Role="T_SCORE">
+        <PropertyRef Name="student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="DB_UNIVERSITY_REGISTRATION_MODELStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_CAMPUS" EntityType="Self.T_CAMPUS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_COURSE" EntityType="Self.T_COURSE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_PROFESSOR" EntityType="Self.T_PROFESSOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_REGISTRATION" EntityType="Self.T_REGISTRATION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_SCHEDULE" EntityType="Self.T_SCHEDULE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_SCORE" EntityType="Self.T_SCORE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_STUDENT" EntityType="Self.T_STUDENT" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__T_REGISTR__sched__46E78A0C" Association="Self.FK__T_REGISTR__sched__46E78A0C">
+      <End Role="T_STUDENT" EntitySet="T_STUDENT" />
+      <End Role="T_REGISTRATION" EntitySet="T_REGISTRATION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_REGISTR__sched__47DBAE45" Association="Self.FK__T_REGISTR__sched__47DBAE45">
+      <End Role="T_SCHEDULE" EntitySet="T_SCHEDULE" />
+      <End Role="T_REGISTRATION" EntitySet="T_REGISTRATION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_SCHEDUL__campu__4316F928" Association="Self.FK__T_SCHEDUL__campu__4316F928">
+      <End Role="T_CAMPUS" EntitySet="T_CAMPUS" />
+      <End Role="T_SCHEDULE" EntitySet="T_SCHEDULE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_SCHEDUL__cours__4222D4EF" Association="Self.FK__T_SCHEDUL__cours__4222D4EF">
+      <End Role="T_COURSE" EntitySet="T_COURSE" />
+      <End Role="T_SCHEDULE" EntitySet="T_SCHEDULE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_SCHEDUL__profe__440B1D61" Association="Self.FK__T_SCHEDUL__profe__440B1D61">
+      <End Role="T_PROFESSOR" EntitySet="T_PROFESSOR" />
+      <End Role="T_SCHEDULE" EntitySet="T_SCHEDULE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_SCORE__schedul__4BAC3F29" Association="Self.FK__T_SCORE__schedul__4BAC3F29">
+      <End Role="T_SCHEDULE" EntitySet="T_SCHEDULE" />
+      <End Role="T_SCORE" EntitySet="T_SCORE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__T_SCORE__student__4AB81AF0" Association="Self.FK__T_SCORE__student__4AB81AF0">
+      <End Role="T_STUDENT" EntitySet="T_STUDENT" />
+      <End Role="T_SCORE" EntitySet="T_SCORE" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

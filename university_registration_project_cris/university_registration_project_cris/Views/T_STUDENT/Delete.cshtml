@@ -1,0 +1,72 @@
+﻿@model university_registration_project_cris.T_STUDENT
+
+@{
+    ViewBag.Title = "Eliminar estudiante";
+}
+
+<h2>ELIMINAR</h2>
+
+<h3>¿Está seguro de que desea eliminar esto?</h3>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.student_personal_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student_personal_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student_last_name1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student_last_name1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student_last_name2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student_last_name2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student_date_of_birth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student_date_of_birth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student_admission_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student_admission_date)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Mostrar lista", "Index")
+        </div>
+    }
+</div>

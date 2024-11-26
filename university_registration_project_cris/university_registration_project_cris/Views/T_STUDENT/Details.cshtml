@@ -1,0 +1,65 @@
+﻿@model university_registration_project_cris.T_STUDENT
+
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h2>DETALLES</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.student_personal_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student_personal_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student_last_name1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student_last_name1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student_last_name2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student_last_name2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student_date_of_birth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student_date_of_birth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.student_admission_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.student_admission_date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.student_id }) |
+    @Html.ActionLink("Mostrar lista", "Index")
+</p>
