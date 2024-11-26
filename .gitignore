@@ -1,0 +1,15 @@
+## Visual Studio
+.vs/
+*.user
+*.suo
+
+## Output Folders
+/bin/
+/obj/
+
+## Build Results
+*.dll
+*.exe
+
+## Packages
+/packages/
